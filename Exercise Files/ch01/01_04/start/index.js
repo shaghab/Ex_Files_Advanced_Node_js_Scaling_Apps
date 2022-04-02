@@ -1,3 +1,3 @@
-const cpus = require("os").cpus();
+const numCPUs = require("os").cpus().length;
 
-console.log(cpus);
+console.log(numCPUs);
