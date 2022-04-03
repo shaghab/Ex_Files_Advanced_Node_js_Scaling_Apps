@@ -19,6 +19,8 @@ if (cluster.isMaster) {
       res.end(`process: ${process.pid}`);
       if (req.url === "/kill") {
         process.exit();
+      } else if ((req.url = "/")) {
+        console.log(`serving from ${process.pid}`);
       } else {
         console.log(`working on request ${process.pid}...`);
       }
