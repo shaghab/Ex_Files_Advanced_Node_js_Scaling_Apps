@@ -16,9 +16,12 @@ if (cluster.isMaster) {
   console.log(`started a worker at ${process.pid}`);
   http
     .createServer((req, res) => {
-      const message = `worker ${process.pid}...`;
-      console.log(message);
-      res.end(message);
+      res.end(`process: ${process.pid}`);
+      if (req.url === "/kill") {
+        process.exit();
+      } else {
+        console.log(`working on request ${process.pid}...`);
+      }
     })
     .listen(3000);
 }
